@@ -1,0 +1,52 @@
+comment = "Write a meaningful comment about the experiment."
+
+[train]
+model_path = exp_prop_{}_top_{}_hdsz_{}_batch_{}_optim_{}_lr_{}_wd_{}_drop_{}_step_{}_mode_{}
+
+# proportion of the dataset to train or test on
+proportion = 1
+
+# whether to load pretrained mode
+preload_model = True
+
+# pretrained model path
+pretrain_model_path = "trained_models/model.pth"
+
+# number of epochs to train
+num_epochs = 100
+
+# batch size for training
+batch_size = 5
+
+# hidden size for RNN
+hidden_size = 1500
+
+# image feature size
+input_size = 2048
+
+# Number of times gradients need to be accumulated before updating the weights
+num_traj = 6
+
+# Optimizer
+optim = adam
+
+# Learning rate
+lr = 0.001
+
+# if learning rate scheduling is required
+if_schedule = True
+
+# weight decay
+weight_decay = 0.0
+
+# drop out
+dropout = 0.2
+
+# number of epochs to wait before the learning rate is to be reduced up being flat
+patience = 8
+
+# mode of training, fixed here.
+mode = 1
+
+# N/A
+top_k = 0
