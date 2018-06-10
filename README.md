@@ -57,15 +57,6 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
     python test_beam_search.py
     ```
 
-### TODO
-
-1. Trial run
-   1. [x] train.py
-   2. [] test.py
-   3. [] test_beam_search.py
-
-
-
 ### Contact
 
 To ask questions, please [email](mailto:gopalsharma@cs.umass.edu).
