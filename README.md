@@ -29,7 +29,7 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
     from src.Utils.train_utils import voxels_from_expressions
 
     # pre-rendered shape primitives in the form of voxels for better performance
-    primitives = dd.io.load("data/mix_len_all_primitives.h5")
+    primitives = dd.io.load("data/primitives.h5")
     expressions = ["cy(48,48,32,8,12)cu(24,24,40,28)+", "sp(48,32,32,8,12)cu(24,24,40,28)+"]
 
     voxels = voxels_from_expressions(expressions, primitives, max_len=7)
@@ -38,7 +38,7 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
     (2, 64, 64, 64)
     ```
 
-    In case of key error in the above, or if you want to execute programs of higher length or arbitary positions and scale, then change the `max_len=len_of_program` and `primitives=None` in the above method. However, this will render primitives on-the-fly and will be slow.
+    In case of key error in the above, or if you want to execute programs of higher length or arbitary positions and scales, then change the `max_len=len_of_program` and `primitives=None` in the above method. However, this will render primitives on-the-fly and will be slow.
 
 ### Supervised Learning
 - To train, update `config.yml` with required arguments. Default arguments are already filled. Then run:
