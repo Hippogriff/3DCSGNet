@@ -2,6 +2,7 @@
 This repository contains code accompanying the paper: [CSGNet: Neural Shape Parser for Constructive Solid Geometry, CVPR 2018](https://arxiv.org/abs/1712.08290).
 
 This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSGNet, look at this [repository](https://github.com/Hippogriff/CSGNet).
+
 ![](image.png)
 
 
@@ -56,6 +57,18 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
     # For beam-search-k testing
     python test_beam_search.py
     ```
+
+### Cite:
+```bibtex
+@InProceedings{Sharma_2018_CVPR,
+author = {Sharma, Gopal and Goyal, Rishabh and Liu, Difan and Kalogerakis, Evangelos and Maji, Subhransu},
+title = {CSGNet: Neural Shape Parser for Constructive Solid Geometry},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2018}
+}
+```
+
 
 ### Contact
 
