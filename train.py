@@ -115,6 +115,8 @@ for k in data_labels_paths.keys():
 
 prev_test_loss = 1e20
 prev_test_reward = 0
+test_size = config.test_size
+batch_size = config.batch_size
 for epoch in range(0, config.epochs):
     train_loss = 0
     Accuracies = []
@@ -188,15 +190,17 @@ for epoch in range(0, config.epochs):
             data_ = data_[-1, :, 0, :, :, :]
             R = np.sum(np.logical_and(stack, data_), (1, 2, 3)) / (
             np.sum(np.logical_or(stack, data_), (1, 2, 3)) + 1)
-            test_reward += np.mean(R)
+            test_reward += np.sum(R)
 
-    test_reward = test_reward / types_prog
+    test_reward = test_reward / (test_size // batch_size) / ((batch_size // types_prog) * types_prog)
+
     test_loss = test_losses.cpu().numpy() / (config.test_size // config.batch_size) / types_prog
     log_value('test_loss', test_loss, epoch)
     log_value('test_IOU', test_reward / (config.test_size // config.batch_size), epoch)
     callback.add_value({
         "test_loss": test_loss,
     })
+    print ("Average test IOU: {} at {} epoch".format(test_reward, epoch))
     if config.if_schedule:
         reduce_plat.reduce_on_plateu(-test_reward)
 

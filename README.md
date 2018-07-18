@@ -17,7 +17,7 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
 ### Data
 - Synthetic Dataset:
 
-    Download the synthetic [dataset](https://www.dropbox.com/s/kq7ackfn6uo6ml8/data.tar.gz) and un-tar it in the root. Synthetic dataset is provided in the form of program expressions, instead of rendered images. Images for training, validation and testing are rendered on the fly. The dataset is split in different program lengths.
+    Download the synthetic [dataset](https://www.dropbox.com/s/kq7ackfn6uo6ml8/data.tar.gz) and un-tar it in the root. Pre-trained model is available [here](https://www.dropbox.com/s/71lft3dwdr2xfvi/models.tar.gz?dl=0), untar it in the directory `trained_models/`. Synthetic dataset is provided in the form of program expressions, instead of rendered images. Images for training, validation and testing are rendered on the fly. The dataset is split in different program lengths.
     ```bash
     tar -zxvf data.tar.gz
     ```
@@ -42,12 +42,12 @@ This code base contains model architecture and dataset for 3D-CSGNet. For 2D-CSG
     In case of key error in the above, or if you want to execute programs of higher length or arbitary positions and scales, then change the `max_len=len_of_program` and `primitives=None` in the above method. However, this will render primitives on-the-fly and will be slow.
 
 ### Supervised Learning
-- To train, update `config.yml` with required arguments. Default arguments are already filled. Then run:
+- To train, update `config.yml` with required arguments. Also make sure to fill up the config.yml file with proportion of the dataset that you want to train on (default is 1 percent, can go up to 100 percent which is used in the paper). Then run:
     ```python
     python train.py
     ```
 
-- To test, update `config.yml` with required arguments. Default arguments are already filled. Then run:
+- To test, update `config.yml` with required arguments. Specify the path of pre-trained model in the config file on the field `pretrain_model_path=trained_models/models.pth`,  `preload_model=True` and `proportion=100`. Then run:
     ```python
     # For top-1 testing
     python test.py
